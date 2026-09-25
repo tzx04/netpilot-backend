@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/netpilot?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: your_mysql_password
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 0
+      timeout: 5000ms
+  application:
+    name: netpilot-backend
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+logging:
+  level:
+    com.netpilot: debug
+
+jwt:
+  secret: your_jwt_secret_key_must_be_at_least_32_bytes
+  expiration: 86400000
+
+
+
+ai:
+  api-key: sk-your_deepseek_api_key
+  base-url: https://api.deepseek.com/v1
+  model: deepseek-chat
